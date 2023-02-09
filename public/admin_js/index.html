@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	background: #f4f4f4;
+}
+
+.list-wrapper {
+	padding: 15px;
+	overflow: hidden;
+}
+
+.list-item {
+	border: 1px solid #EEE;
+	background: #FFF;
+	margin-bottom: 10px;
+	padding: 10px;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.list-item h4 {
+	color: #FF7182;
+	font-size: 18px;
+	margin: 0 0 5px;	
+}
+
+.list-item p {
+	margin: 0;
+}
+
+.simple-pagination ul {
+	margin: 0 0 20px;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.simple-pagination li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.simple-pagination li a,
+.simple-pagination li span {
+	color: #666;
+	padding: 5px 10px;
+	text-decoration: none;
+	border: 1px solid #EEE;
+	background-color: #FFF;
+	box-shadow: 0px 0px 10px 0px #EEE;
+}
+
+.simple-pagination .current {
+	color: #FFF;
+	background-color: #FF7182;
+	border-color: #FF7182;
+}
+
+.simple-pagination .prev.current,
+.simple-pagination .next.current {
+	background: #e04e60;
+}
+    </style>
+</head>
+<body>
+    <div class="list-wrapper">
+        <div class="list-item">
+            <h4>Iron Man</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>The Incredible Hulk</h4>
+            </div>
+        <div class="list-item">
+            <h4>Iron Man 2</h4>
+            </div>
+        
+        <div class="list-item">
+            <h4>Thor</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Captain America: The First Avenger</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>The Avengers</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Iron Man 3</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Thor: The Dark World</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Captain America: The Winter Soldier</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Guardians of the Galaxy</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Avengers: Age of Ultron</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Ant-Man</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Captain America: Civil War</h4>
+            
+        </div>
+        <div class="list-item">
+            <h4>Doctor Strange</h4>
+            </div>
+        <div class="list-item">
+            <h4>Spider-Man: Homecoming</h4>
+            </div>
+        <div class="list-item">
+            <h4>Guardians of the Galaxy Vol. 2</h4>
+            </div>
+        <div class="list-item">
+            <h4>Thor: Ragnarok</h4>
+            </div>
+        <div class="list-item">
+            <h4>Black Panther</h4>
+            </div>
+        <div class="list-item">
+            <h4>Avengers: Infinity War</h4>
+            </div>
+    </div>
+    
+    <div id="pagination-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
+    <script>
+        // jQuery Plugin: http://flaviusmatis.github.io/simplePagination.js/
+
+var items = $(".list-wrapper .list-item");
+    var numItems = items.length;
+    var perPage = 4;
+
+    items.slice(perPage).hide();
+
+    $('#pagination-container').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "&laquo;",
+        nextText: "&raquo;",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+        }
+    });
+    </script>
+</body>
+</html>
